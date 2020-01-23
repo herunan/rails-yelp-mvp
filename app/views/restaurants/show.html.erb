@@ -1,12 +1,23 @@
-<h1><%= @restaurant.name %></h1>
-<h2><%= @restaurant.address %></h2>
-<h3><%= @restaurant.category %></h3>
-<p><%= @restaurant.phone_number %></p>
-<%= link_to "Review restaurant", new_restaurant_review_path(@restaurant) %>
-<ul>
-  <% @restaurant.reviews.each do |review| %>
-    <p>Review: <%= review.content %></p>
-    <p>Rating: <%= review.rating %></p>
-  <% end %>
-</ul>
-<%= link_to "Back to list", restaurants_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 offset-md-3">
+      <h1><%= @restaurant.name %></h1>
+      <p><strong>Cuisine:</strong> <%= @restaurant.category.capitalize %></p>
+      <p><strong>Area:</strong> <%= @restaurant.address %></p>
+      <p><strong>Tel.:</strong> <%= @restaurant.phone_number %></p>
+      <p><%= link_to "Review restaurant", new_restaurant_review_path(@restaurant) %></p>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <% @restaurant.reviews.each do |review| %>
+            <li class="list-group-item">
+              <p><strong>Review:</strong> <%= review.content %>
+              <p><strong>Rating:</strong> <%= review.rating %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <br>
+      <%= link_to "Back to list", restaurants_path %>
+    </div>
+  </div>
+</div>
